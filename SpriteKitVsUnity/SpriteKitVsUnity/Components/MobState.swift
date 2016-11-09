@@ -9,19 +9,10 @@
 import Foundation
 import GameplayKit
 
-typealias StateAnimationHandler = () -> Void
-
-class MoveState: GKState
+class MoveState: AnimationState
 {
-    let moveAnimHandler: StateAnimationHandler
-
-    init(_ enterHandler: @escaping StateAnimationHandler) {
-        moveAnimHandler = enterHandler
-    }
-    
-    override func didEnter(from previousState: GKState?) {
-        print("entering move state")
-        moveAnimHandler()
+    init(_ handler: @escaping StateAnimationHandler) {
+        super.init(stateName: "Move", handler)
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -29,17 +20,32 @@ class MoveState: GKState
     }
 }
 
-class IdleState: GKState
+class IdleState: AnimationState
 {
-    let moveAnimHandler: StateAnimationHandler
-    
-    init(_ enterHandler: @escaping StateAnimationHandler) {
-        moveAnimHandler = enterHandler
+    init(_ handler: @escaping StateAnimationHandler) {
+        super.init(stateName: "Idle", handler)
     }
     
-    override func didEnter(from previousState: GKState?) {
-        print("entering idle state")
-        moveAnimHandler()
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == MoveState.self
+    }
+}
+
+class AttackState: AnimationState
+{
+    init(_ handler: @escaping StateAnimationHandler) {
+        super.init(stateName: "Attack", handler)
+    }
+    
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass == MoveState.self
+    }
+}
+
+class DyingState: AnimationState
+{
+    init(_ handler: @escaping StateAnimationHandler) {
+        super.init(stateName: "Dying", handler)
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -51,28 +57,52 @@ class MobState: GKComponent, Loadable
 {
     var mobState: GKStateMachine?
     
-    static let ANIMATION_KEY = "StateAnimation"
-    
     @GKInspectable var idleAnimation: String = "Idle"
     @GKInspectable var moveAnimation: String = "Move"
-    
-    func wasLoaded(into scene: SKScene) {
+    @GKInspectable var attackAnimation: String = "Attack"
+    @GKInspectable var dieAnimation: String = "Die"
+
+    func wasLoaded(into scene: SKScene)
+    {
         guard let spriteNode = entity?.sprite else {
             print("Attach this component to a sprite node")
             return
         }
-        let idle = IdleState {
-            spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
-            let idle = SKAction(named: self.idleAnimation)!
-            spriteNode.run(SKAction.repeatForever(idle), withKey: MobState.ANIMATION_KEY)
+        var animStates = [ AnimationState ]()
+        if let idleAnim = SKAction(named: idleAnimation)
+        {
+            let idle = IdleState() {
+                spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
+                spriteNode.run(idleAnim, withKey: MobState.ANIMATION_KEY)
+            }
+            animStates.append(idle)
         }
-        let move = MoveState {
-            spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
-            let move = SKAction(named: self.moveAnimation)!
-            spriteNode.run(SKAction.repeatForever(move), withKey: MobState.ANIMATION_KEY)
+        if let moveAnim = SKAction(named: moveAnimation)
+        {
+            let move = IdleState() {
+                spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
+                spriteNode.run(moveAnim, withKey: MobState.ANIMATION_KEY)
+            }
+            animStates.append(move)
+        }
+        if let idleAnim = SKAction(named: self.idleAnimation)
+        {
+            let idle = IdleState() {
+                spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
+                spriteNode.run(idleAnim, withKey: MobState.ANIMATION_KEY)
+            }
+            animStates.append(idle)
+        }
+        if let idleAnim = SKAction(named: self.idleAnimation)
+        {
+            let idle = IdleState() {
+                spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
+                spriteNode.run(idleAnim, withKey: MobState.ANIMATION_KEY)
+            }
+            animStates.append(idle)
         }
         print("Assigned mobile character state machine to \(spriteNode.name!)")
-        mobState = GKStateMachine(states: [ idle, move ])
+        mobState = GKStateMachine(states: animStates)
         mobState?.enter(IdleState.self)
     }
     

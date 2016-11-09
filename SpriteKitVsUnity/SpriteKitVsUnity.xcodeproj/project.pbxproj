@@ -9,19 +9,22 @@
 /* Begin PBXBuildFile section */
 		F67376C81DCF13600047FE55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67376C71DCF13600047FE55 /* AppDelegate.swift */; };
 		F67376CA1DCF13600047FE55 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F67376C91DCF13600047FE55 /* GameScene.sks */; };
-		F67376CC1DCF13600047FE55 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F67376CB1DCF13600047FE55 /* Actions.sks */; };
 		F67376CE1DCF13600047FE55 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67376CD1DCF13600047FE55 /* GameScene.swift */; };
 		F67376D01DCF13600047FE55 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67376CF1DCF13600047FE55 /* GameViewController.swift */; };
 		F67376D31DCF13600047FE55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67376D11DCF13600047FE55 /* Main.storyboard */; };
 		F67376D51DCF13600047FE55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F67376D41DCF13600047FE55 /* Assets.xcassets */; };
 		F67376D81DCF13600047FE55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67376D61DCF13600047FE55 /* LaunchScreen.storyboard */; };
+		F68E27CE1DD2BA7000B0C4FC /* MultiStateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68E27CD1DD2BA7000B0C4FC /* MultiStateObject.swift */; };
+		F68E27D01DD2D22900B0C4FC /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68E27CF1DD2D22900B0C4FC /* AnimationState.swift */; };
 		F68F13221DD01D2F00FD6C78 /* SKScene+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68F13211DD01D2F00FD6C78 /* SKScene+Touch.swift */; };
 		F68F13251DD0441600FD6C78 /* TileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = F68F13231DD0441600FD6C78 /* TileSet.sks */; };
 		F68F13261DD0441600FD6C78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F68F13241DD0441600FD6C78 /* Assets.xcassets */; };
 		F68F132E1DD06A5400FD6C78 /* Characters.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F68F132D1DD06A5400FD6C78 /* Characters.xcassets */; };
-		F68F13301DD06C0000FD6C78 /* HeroRun.sks in Resources */ = {isa = PBXBuildFile; fileRef = F68F132F1DD06C0000FD6C78 /* HeroRun.sks */; };
 		F68F13321DD06C4600FD6C78 /* HeroActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F68F13311DD06C4600FD6C78 /* HeroActions.sks */; };
 		F6CA5B8F1DD07FD60099874A /* MobState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CA5B8E1DD07FD60099874A /* MobState.swift */; };
+		F6D216FD1DD2F661002CA9DD /* TreasureMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D216FC1DD2F661002CA9DD /* TreasureMap.swift */; };
+		F6D216FF1DD300C1002CA9DD /* Treasure.sks in Resources */ = {isa = PBXBuildFile; fileRef = F6D216FE1DD300C1002CA9DD /* Treasure.sks */; };
+		F6D217011DD33E0D002CA9DD /* FemaleZombieActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F6D217001DD33E0D002CA9DD /* FemaleZombieActions.sks */; };
 		F6D8DE901DCFF7D60078EF01 /* CameraConstrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE791DCFF7D60078EF01 /* CameraConstrain.swift */; };
 		F6D8DE911DCFF7D60078EF01 /* NodeFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7A1DCFF7D60078EF01 /* NodeFollow.swift */; };
 		F6D8DE921DCFF7D60078EF01 /* PerimeterFence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7B1DCFF7D60078EF01 /* PerimeterFence.swift */; };
@@ -48,20 +51,23 @@
 		F67376C41DCF13600047FE55 /* SpriteKitVsUnity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitVsUnity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67376C71DCF13600047FE55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67376C91DCF13600047FE55 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		F67376CB1DCF13600047FE55 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		F67376CD1DCF13600047FE55 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		F67376CF1DCF13600047FE55 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F67376D21DCF13600047FE55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F67376D41DCF13600047FE55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F67376D71DCF13600047FE55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F67376D91DCF13600047FE55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F68E27CD1DD2BA7000B0C4FC /* MultiStateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiStateObject.swift; sourceTree = "<group>"; };
+		F68E27CF1DD2D22900B0C4FC /* AnimationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationState.swift; path = ../Components/AnimationState.swift; sourceTree = "<group>"; };
 		F68F13211DD01D2F00FD6C78 /* SKScene+Touch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKScene+Touch.swift"; sourceTree = "<group>"; };
 		F68F13231DD0441600FD6C78 /* TileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSet.sks; sourceTree = "<group>"; };
 		F68F13241DD0441600FD6C78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F68F132D1DD06A5400FD6C78 /* Characters.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Characters.xcassets; sourceTree = "<group>"; };
-		F68F132F1DD06C0000FD6C78 /* HeroRun.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HeroRun.sks; sourceTree = "<group>"; };
 		F68F13311DD06C4600FD6C78 /* HeroActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HeroActions.sks; sourceTree = "<group>"; };
 		F6CA5B8E1DD07FD60099874A /* MobState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobState.swift; sourceTree = "<group>"; };
+		F6D216FC1DD2F661002CA9DD /* TreasureMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureMap.swift; sourceTree = "<group>"; };
+		F6D216FE1DD300C1002CA9DD /* Treasure.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Treasure.sks; sourceTree = "<group>"; };
+		F6D217001DD33E0D002CA9DD /* FemaleZombieActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FemaleZombieActions.sks; sourceTree = "<group>"; };
 		F6D8DE791DCFF7D60078EF01 /* CameraConstrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraConstrain.swift; sourceTree = "<group>"; };
 		F6D8DE7A1DCFF7D60078EF01 /* NodeFollow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeFollow.swift; sourceTree = "<group>"; };
 		F6D8DE7B1DCFF7D60078EF01 /* PerimeterFence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerimeterFence.swift; sourceTree = "<group>"; };
@@ -121,9 +127,8 @@
 			children = (
 				F67376C71DCF13600047FE55 /* AppDelegate.swift */,
 				F67376C91DCF13600047FE55 /* GameScene.sks */,
-				F68F132F1DD06C0000FD6C78 /* HeroRun.sks */,
 				F68F13311DD06C4600FD6C78 /* HeroActions.sks */,
-				F67376CB1DCF13600047FE55 /* Actions.sks */,
+				F6D216FE1DD300C1002CA9DD /* Treasure.sks */,
 				F67376CD1DCF13600047FE55 /* GameScene.swift */,
 				F67376CF1DCF13600047FE55 /* GameViewController.swift */,
 				F67376D11DCF13600047FE55 /* Main.storyboard */,
@@ -131,6 +136,7 @@
 				F67376D61DCF13600047FE55 /* LaunchScreen.storyboard */,
 				F67376D91DCF13600047FE55 /* Info.plist */,
 				F68F132D1DD06A5400FD6C78 /* Characters.xcassets */,
+				F6D217001DD33E0D002CA9DD /* FemaleZombieActions.sks */,
 			);
 			path = SpriteKitVsUnity;
 			sourceTree = "<group>";
@@ -143,6 +149,8 @@
 				F6D8DE7B1DCFF7D60078EF01 /* PerimeterFence.swift */,
 				F6D8DE7C1DCFF7D60078EF01 /* PlayerMove.swift */,
 				F6CA5B8E1DD07FD60099874A /* MobState.swift */,
+				F68E27CD1DD2BA7000B0C4FC /* MultiStateObject.swift */,
+				F6D216FC1DD2F661002CA9DD /* TreasureMap.swift */,
 			);
 			name = Components;
 			path = SpriteKitVsUnity/Components;
@@ -151,6 +159,7 @@
 		F6D8DE7D1DCFF7D60078EF01 /* GKSupport */ = {
 			isa = PBXGroup;
 			children = (
+				F68E27CF1DD2D22900B0C4FC /* AnimationState.swift */,
 				F68F13211DD01D2F00FD6C78 /* SKScene+Touch.swift */,
 				F6D8DE7E1DCFF7D60078EF01 /* GKComponent+Touchable.swift */,
 				F6D8DE7F1DCFF7D60078EF01 /* GKEntity+SpriteKit.swift */,
@@ -246,11 +255,11 @@
 				F68F132E1DD06A5400FD6C78 /* Characters.xcassets in Resources */,
 				F68F13321DD06C4600FD6C78 /* HeroActions.sks in Resources */,
 				F67376CA1DCF13600047FE55 /* GameScene.sks in Resources */,
+				F6D217011DD33E0D002CA9DD /* FemaleZombieActions.sks in Resources */,
 				F67376D51DCF13600047FE55 /* Assets.xcassets in Resources */,
 				F68F13261DD0441600FD6C78 /* Assets.xcassets in Resources */,
-				F68F13301DD06C0000FD6C78 /* HeroRun.sks in Resources */,
 				F67376D81DCF13600047FE55 /* LaunchScreen.storyboard in Resources */,
-				F67376CC1DCF13600047FE55 /* Actions.sks in Resources */,
+				F6D216FF1DD300C1002CA9DD /* Treasure.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +279,7 @@
 				F6D8DE921DCFF7D60078EF01 /* PerimeterFence.swift in Sources */,
 				F6D8DE9F1DCFF7D60078EF01 /* SKColor+Extensions.swift in Sources */,
 				F6D8DE9C1DCFF7D60078EF01 /* Int+Extensions.swift in Sources */,
+				F6D216FD1DD2F661002CA9DD /* TreasureMap.swift in Sources */,
 				F6D8DE9B1DCFF7D60078EF01 /* CGVector+Extensions.swift in Sources */,
 				F67376D01DCF13600047FE55 /* GameViewController.swift in Sources */,
 				F6D8DE901DCFF7D60078EF01 /* CameraConstrain.swift in Sources */,
@@ -281,9 +291,11 @@
 				F6D8DE9D1DCFF7D60078EF01 /* SKAction+Extensions.swift in Sources */,
 				F67376C81DCF13600047FE55 /* AppDelegate.swift in Sources */,
 				F6D8DEA01DCFF7D60078EF01 /* SKNode+Extensions.swift in Sources */,
+				F68E27CE1DD2BA7000B0C4FC /* MultiStateObject.swift in Sources */,
 				F6D8DEA11DCFF7D60078EF01 /* SKTAudio.swift in Sources */,
 				F6D8DEA21DCFF7D60078EF01 /* SKTEffects.swift in Sources */,
 				F6D8DE911DCFF7D60078EF01 /* NodeFollow.swift in Sources */,
+				F68E27D01DD2D22900B0C4FC /* AnimationState.swift in Sources */,
 				F6D8DEA41DCFF7D60078EF01 /* Vector3.swift in Sources */,
 				F6D8DE961DCFF7D60078EF01 /* Loadable.swift in Sources */,
 			);
