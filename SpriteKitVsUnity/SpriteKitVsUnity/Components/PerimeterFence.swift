@@ -9,6 +9,16 @@
 import SpriteKit
 import GameplayKit
 
+struct PhysicsCategory {
+    static let None:      UInt32 = 0
+    static let All:       UInt32 = 0xFFFFFFFF
+    static let Edge:      UInt32 = 0b1
+    static let Player:    UInt32 = 0b10
+    static let Treasure:  UInt32 = 0b100
+    static let Zombie:    UInt32 = 0b1000
+    static let Barrier:   UInt32 = 0b10000
+}
+
 class PerimeterFence: GKComponent, Loadable
 {
     func wasLoaded(into inScene: SKScene)
@@ -21,5 +31,6 @@ class PerimeterFence: GKComponent, Loadable
         }
         print("Adding perimeter fence \(background.frame) to \(background.name ?? "background")")
         background.physicsBody = SKPhysicsBody(edgeLoopFrom: background.frame)
+        background.physicsBody?.collisionBitMask = PhysicsCategory.Edge
     }
 }

@@ -43,6 +43,16 @@ class MultiStateObject: GKComponent, Loadable
         base.animation = SKAction(named: baseAnimation)
         let active = ActiveState(stateName: "Active", node: spriteNode)
         active.animation = SKAction(named: activeAnimation)
+        let activation: StateAnimationHandler = { [unowned self] in
+            if let components = self.entity?.components
+            {
+                for c in components
+                {
+                    (c as? Activatable)?.activate()
+                }
+            }
+        }
+        active.stateHandlers.append(activation)
         print("Assigned multi-state machine to \(spriteNode.name!)")
         mobState = GKStateMachine(states: [ base, active ])
         mobState?.enter(BaseState.self)

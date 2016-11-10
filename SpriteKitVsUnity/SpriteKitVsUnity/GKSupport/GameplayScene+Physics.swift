@@ -24,7 +24,7 @@ extension GameplayScene: SKPhysicsContactDelegate
     
     func didBegin(_ contact: SKPhysicsContact)
     {
-        print("contact: \(contact.bodyA.node) - \(contact.bodyB.node)")
+        print("contact: \(contact.bodyA.node?.name ?? "unnamed") - \(contact.bodyB.node?.name ?? "unnamed")")
         if contact.bodyA.node?.userData?.object(forKey: "Chest") != nil
         {
             activate(node: contact.bodyA.node!)

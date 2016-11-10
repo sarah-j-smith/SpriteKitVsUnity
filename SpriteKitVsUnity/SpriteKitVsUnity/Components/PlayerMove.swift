@@ -9,7 +9,7 @@
 import GameplayKit
 import SpriteKit
 
-class PlayerMove : GKComponent, Touchable
+class PlayerMove : GKComponent, Loadable, Touchable
 {
     @GKInspectable var playerSpeed: Float = 280.0
     
@@ -21,6 +21,17 @@ class PlayerMove : GKComponent, Touchable
     {
         move(target: point)
         return true
+    }
+    
+    func wasLoaded(into scene: SKScene)
+    {
+        guard let actualPhysicsBody = entity?.sprite?.physicsBody else {
+            print("Enable a physics body to make this component work")
+            return
+        }
+        actualPhysicsBody.categoryBitMask = PhysicsCategory.Player
+        actualPhysicsBody.collisionBitMask = PhysicsCategory.Edge
+        actualPhysicsBody.contactTestBitMask = PhysicsCategory.All
     }
     
     func move(target: CGPoint)
@@ -35,9 +46,6 @@ class PlayerMove : GKComponent, Touchable
         }
         let pt = target - spriteNode.position
         let newVelocity = pt.normalized() * CGFloat(playerSpeed)
-        
-//        print("target: \(target) pos: \(spriteNode.position)")
-//        print("velocity: \(CGVector(point: newVelocity))")
         
         actualPhysicsBody.velocity = CGVector(point: newVelocity)
         targetPoint = target

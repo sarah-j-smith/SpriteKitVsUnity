@@ -10,16 +10,31 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-typealias NodeEntity = (node: SKNode, entities: [GKEntity])
+typealias NodeEntity = (node: SKNode, ent: GKEntity)
 
-extension GKScene {
-    func contentNode() -> NodeEntity?
+extension GKScene
+{
+    func contentNode() -> NodeEntity
     {
-        if let content = (rootNode as? SKScene)?.children.first
+        if let contentNode = (rootNode as? SKScene)?.children.first
         {
-            return (node: content, entities)
+            let contentEntity = entities.first { (e: GKEntity) -> Bool in
+                return e.sprite == contentNode
+            }
+            if let actualContentEntity = contentEntity
+            {
+                return NodeEntity(node: contentNode, ent: actualContentEntity)
+            }
+            else
+            {
+                return NodeEntity(node: contentNode, ent: GKEntity())
+            }
         }
-        return nil
+        else
+        {
+            print("Error: No children in GKScene \((rootNode as? SKScene)?.name)")
+        }
+        return (node: SKNode(), ent: GKEntity())
     }
 }
 
@@ -31,13 +46,10 @@ extension SKNode
         if let actualScene = scene
         {
             (childNode as? Loadable)?.wasLoaded(into: actualScene)
-            (scene as? GameplayScene)?.entities.append(contentsOf: childNode.entities)
-            for e in childNode.entities
+            (scene as? GameplayScene)?.entities.append(childNode.ent)
+            for c in childNode.ent.components
             {
-                for c in e.components
-                {
-                    (c as? Loadable)?.wasLoaded(into: actualScene)
-                }
+                (c as? Loadable)?.wasLoaded(into: actualScene)
             }
         }
     }

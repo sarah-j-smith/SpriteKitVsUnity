@@ -27,8 +27,6 @@
 		F69FBC0E1DD427520080BED7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69FBC0D1DD427520080BED7 /* Button.swift */; };
 		F69FBC101DD42A880080BED7 /* GameplayScene+Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69FBC0F1DD42A880080BED7 /* GameplayScene+Physics.swift */; };
 		F6CA5B8F1DD07FD60099874A /* MobState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CA5B8E1DD07FD60099874A /* MobState.swift */; };
-		F6D216FD1DD2F661002CA9DD /* TreasureMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D216FC1DD2F661002CA9DD /* TreasureMap.swift */; };
-		F6D216FF1DD300C1002CA9DD /* TreasureChest.sks in Resources */ = {isa = PBXBuildFile; fileRef = F6D216FE1DD300C1002CA9DD /* TreasureChest.sks */; };
 		F6D217011DD33E0D002CA9DD /* FemaleZombieActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F6D217001DD33E0D002CA9DD /* FemaleZombieActions.sks */; };
 		F6D8DE901DCFF7D60078EF01 /* CameraConstrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE791DCFF7D60078EF01 /* CameraConstrain.swift */; };
 		F6D8DE911DCFF7D60078EF01 /* NodeFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7A1DCFF7D60078EF01 /* NodeFollow.swift */; };
@@ -49,6 +47,9 @@
 		F6D8DEA21DCFF7D60078EF01 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE8D1DCFF7D60078EF01 /* SKTEffects.swift */; };
 		F6D8DEA31DCFF7D60078EF01 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE8E1DCFF7D60078EF01 /* SKTTimingFunctions.swift */; };
 		F6D8DEA41DCFF7D60078EF01 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE8F1DCFF7D60078EF01 /* Vector3.swift */; };
+		F6FBD8A91DD49C7900BC0DA9 /* Treasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FBD8A81DD49C7900BC0DA9 /* Treasure.swift */; };
+		F6FBD8AB1DD49D9600BC0DA9 /* Activatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FBD8AA1DD49D9600BC0DA9 /* Activatable.swift */; };
+		F6FBD8AD1DD4A13900BC0DA9 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FBD8AC1DD4A13900BC0DA9 /* Points.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,7 +75,6 @@
 		F69FBC0D1DD427520080BED7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		F69FBC0F1DD42A880080BED7 /* GameplayScene+Physics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameplayScene+Physics.swift"; sourceTree = "<group>"; };
 		F6CA5B8E1DD07FD60099874A /* MobState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobState.swift; sourceTree = "<group>"; };
-		F6D216FC1DD2F661002CA9DD /* TreasureMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureMap.swift; sourceTree = "<group>"; };
 		F6D216FE1DD300C1002CA9DD /* TreasureChest.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TreasureChest.sks; sourceTree = "<group>"; };
 		F6D217001DD33E0D002CA9DD /* FemaleZombieActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FemaleZombieActions.sks; sourceTree = "<group>"; };
 		F6D8DE791DCFF7D60078EF01 /* CameraConstrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraConstrain.swift; sourceTree = "<group>"; };
@@ -96,6 +96,9 @@
 		F6D8DE8D1DCFF7D60078EF01 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		F6D8DE8E1DCFF7D60078EF01 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		F6D8DE8F1DCFF7D60078EF01 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		F6FBD8A81DD49C7900BC0DA9 /* Treasure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treasure.swift; sourceTree = "<group>"; };
+		F6FBD8AA1DD49D9600BC0DA9 /* Activatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activatable.swift; sourceTree = "<group>"; };
+		F6FBD8AC1DD4A13900BC0DA9 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +164,9 @@
 				F6D8DE7C1DCFF7D60078EF01 /* PlayerMove.swift */,
 				F6CA5B8E1DD07FD60099874A /* MobState.swift */,
 				F68E27CD1DD2BA7000B0C4FC /* MultiStateObject.swift */,
-				F6D216FC1DD2F661002CA9DD /* TreasureMap.swift */,
 				F69FBC0D1DD427520080BED7 /* Button.swift */,
+				F6FBD8A81DD49C7900BC0DA9 /* Treasure.swift */,
+				F6FBD8AC1DD4A13900BC0DA9 /* Points.swift */,
 			);
 			name = Components;
 			path = SpriteKitVsUnity/Components;
@@ -177,6 +181,7 @@
 				F6D8DE801DCFF7D60078EF01 /* Loadable.swift */,
 				F6D8DE821DCFF7D60078EF01 /* Touchable.swift */,
 				F69FBC0F1DD42A880080BED7 /* GameplayScene+Physics.swift */,
+				F6FBD8AA1DD49D9600BC0DA9 /* Activatable.swift */,
 			);
 			name = GKSupport;
 			path = SpriteKitVsUnity/GKSupport;
@@ -273,7 +278,6 @@
 				F67376D51DCF13600047FE55 /* Assets.xcassets in Resources */,
 				F68F13261DD0441600FD6C78 /* Assets.xcassets in Resources */,
 				F67376D81DCF13600047FE55 /* LaunchScreen.storyboard in Resources */,
-				F6D216FF1DD300C1002CA9DD /* TreasureChest.sks in Resources */,
 				F69FBC0A1DD40C540080BED7 /* ChestActions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +299,6 @@
 				F6D8DE921DCFF7D60078EF01 /* PerimeterFence.swift in Sources */,
 				F6D8DE9F1DCFF7D60078EF01 /* SKColor+Extensions.swift in Sources */,
 				F6D8DE9C1DCFF7D60078EF01 /* Int+Extensions.swift in Sources */,
-				F6D216FD1DD2F661002CA9DD /* TreasureMap.swift in Sources */,
 				F6D8DE9B1DCFF7D60078EF01 /* CGVector+Extensions.swift in Sources */,
 				F69FBC101DD42A880080BED7 /* GameplayScene+Physics.swift in Sources */,
 				F67376D01DCF13600047FE55 /* GameViewController.swift in Sources */,
@@ -309,7 +312,10 @@
 				F6D8DEA01DCFF7D60078EF01 /* SKNode+Extensions.swift in Sources */,
 				F68E27CE1DD2BA7000B0C4FC /* MultiStateObject.swift in Sources */,
 				F6D8DEA11DCFF7D60078EF01 /* SKTAudio.swift in Sources */,
+				F6FBD8AD1DD4A13900BC0DA9 /* Points.swift in Sources */,
 				F6D8DEA21DCFF7D60078EF01 /* SKTEffects.swift in Sources */,
+				F6FBD8AB1DD49D9600BC0DA9 /* Activatable.swift in Sources */,
+				F6FBD8A91DD49C7900BC0DA9 /* Treasure.swift in Sources */,
 				F6D8DE911DCFF7D60078EF01 /* NodeFollow.swift in Sources */,
 				F68E27D01DD2D22900B0C4FC /* AnimationState.swift in Sources */,
 				F6D8DEA41DCFF7D60078EF01 /* Vector3.swift in Sources */,
