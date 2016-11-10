@@ -15,19 +15,6 @@ extension GKEntity
         return component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
     }
     
-    func wasTriggered(worldPoint point: CGPoint) -> Bool
-    {
-        for c in components
-        {
-            if c.wasTriggered(worldPoint: point)
-            {
-                return true
-            }
-        }
-        return false
-    }
-    
-    
     func wasLoaded(into scene: SKScene)
     {
         for c in components

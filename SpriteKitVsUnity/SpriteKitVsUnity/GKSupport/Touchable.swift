@@ -12,18 +12,13 @@ import SpriteKit
 /** Only should be implemented / complied with in iOS touch devices (not TV) */
 protocol Touchable
 {
-    /** The rect in the objects coordinates which can be touched to trigger it */
-    var triggerRect: CGRect { get }
+    /** Priority amongst all objects that might receive a touch.  0 objects are asked first.   */
+    var priority: Int { get }
     
     /** Was the object triggered by a touch at this given point?  Return true from
      this function to take ownership of the touch.  */
     func wasTriggered(worldPoint point: CGPoint) -> Bool
     
-    /** On touch down, if triggered */
-    func activate()
-    
-    /** On touch up, if triggered */
-    func deactivate()
     
 }
 

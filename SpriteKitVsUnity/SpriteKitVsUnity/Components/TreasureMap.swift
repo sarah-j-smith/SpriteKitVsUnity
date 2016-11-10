@@ -32,21 +32,27 @@ class TreasureMap: GKComponent, Loadable
         treasureNode.position = tileMap.position
         scene.addChild(treasureNode)
         
+        var treasureCount = 0
         for row in 0 ..< tileMap.numberOfRows {
             for col in 0 ..< tileMap.numberOfColumns {
                 let tile = tileDefinition(in: tileMap, at: (col, row))
-                if tile != nil
+                if tile == nil { continue }
+                if let actualTreasure = GKScene(fileNamed: treasure)?.contentNode()
                 {
-                    if let actualTreasure = SKNode(fileNamed: treasure)
-                    {
-                        treasureNode.addChild(actualTreasure)
-                        actualTreasure.position = tileMap.centerOfTile(atColumn: col, row: row)
-                    }
+                    actualTreasure.node.removeFromParent()
+                    treasureCount += 1
+                    treasureNode.load(childNode: actualTreasure)
+                    actualTreasure.node.position = tileMap.centerOfTile(atColumn: col, row: row)
+                }
+                else
+                {
+                    print("Could not load \(treasure) for map \(tileMap.name!)")
+                    return
                 }
             }
         }
         
-        print("Set instances in \(tileMap) to \(treasure)")
+        print("Set up \(treasureCount) instances in \(tileMap.name!) to \(treasure)")
         tileMap.removeFromParent()
     }
 }

@@ -36,6 +36,6 @@ class CameraConstrain: GKComponent, Loadable
         constraints.append(viewConstraint)
         actualCamera.constraints = constraints
         
-        print("Added camera view constrain to \(actualCamera) within \(actualTarget)")
+        print("Added camera view constrain to \(actualCamera.name!) within \(actualTarget.name!)")
     }
 }

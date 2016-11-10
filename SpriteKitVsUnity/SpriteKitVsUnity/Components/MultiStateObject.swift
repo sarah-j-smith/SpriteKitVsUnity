@@ -12,17 +12,19 @@ import GameplayKit
 class BaseState: AnimationState
 {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == MoveState.self
+        return stateClass == ActiveState.self
     }
 }
 
 class ActiveState: AnimationState
 {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == MoveState.self
+        return stateClass == BaseState.self
     }
 }
 
+/** A component that can take on one of two states: a quiescent waiting state by default,
+    and an activated state. */
 class MultiStateObject: GKComponent, Loadable
 {
     var mobState: GKStateMachine?
@@ -37,37 +39,12 @@ class MultiStateObject: GKComponent, Loadable
             print("Attach this component to a sprite node")
             return
         }
-        let idle = IdleState(stateName: "Idle") {
-            spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
-            spriteNode.run(SKAction(named: self.baseAnimation)!, withKey: MobState.ANIMATION_KEY)
-        }
-        let move = MoveState(stateName: "Move") {
-            spriteNode.removeAction(forKey: MobState.ANIMATION_KEY)
-            spriteNode.run(SKAction(named: self.activeAnimation)!, withKey: MobState.ANIMATION_KEY)
-        }
-        print("Assigned mobile character state machine to \(spriteNode.name!)")
-        mobState = GKStateMachine(states: [ idle, move ])
-        mobState?.enter(IdleState.self)
-    }
-    
-    override func update(deltaTime seconds: TimeInterval)
-    {
-        guard let actualPhysicsBody = entity?.sprite?.physicsBody else {
-            print("Enable a physics body to make this component work")
-            return
-        }
-        
-        let v = actualPhysicsBody.velocity
-        if fabsf(Float(v.dx)) < 3.0 && fabsf(Float(v.dy)) < 3.0
-        {
-            actualPhysicsBody.velocity = CGVector.zero
-            mobState?.enter(IdleState.self)
-        }
-        else
-        {
-            let flipScale = (actualPhysicsBody.velocity.dx > 0.0) ? 1.0 : -1.0
-            entity?.sprite?.xScale = CGFloat(flipScale)
-            mobState?.enter(MoveState.self)
-        }
+        let base = BaseState(stateName: "Base", node: spriteNode)
+        base.animation = SKAction(named: baseAnimation)
+        let active = ActiveState(stateName: "Active", node: spriteNode)
+        active.animation = SKAction(named: activeAnimation)
+        print("Assigned multi-state machine to \(spriteNode.name!)")
+        mobState = GKStateMachine(states: [ base, active ])
+        mobState?.enter(BaseState.self)
     }
 }

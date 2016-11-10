@@ -9,13 +9,16 @@
 import GameplayKit
 import SpriteKit
 
-class PlayerMove : GKComponent
+class PlayerMove : GKComponent, Touchable
 {
     @GKInspectable var playerSpeed: Float = 280.0
     
     private var targetPoint = CGPoint.zero
     
-    override func wasTriggered(worldPoint point: CGPoint) -> Bool {
+    var priority: Int { return 9 }
+    
+    func wasTriggered(worldPoint point: CGPoint) -> Bool
+    {
         move(target: point)
         return true
     }
@@ -33,8 +36,8 @@ class PlayerMove : GKComponent
         let pt = target - spriteNode.position
         let newVelocity = pt.normalized() * CGFloat(playerSpeed)
         
-        print("target: \(target) pos: \(spriteNode.position)")
-        print("velocity: \(CGVector(point: newVelocity))")
+//        print("target: \(target) pos: \(spriteNode.position)")
+//        print("velocity: \(CGVector(point: newVelocity))")
         
         actualPhysicsBody.velocity = CGVector(point: newVelocity)
         targetPoint = target

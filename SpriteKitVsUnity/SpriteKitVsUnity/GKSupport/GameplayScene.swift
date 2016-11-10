@@ -19,6 +19,7 @@ class GameplayScene: SKScene
 
     override func didMove(to view: SKView) {
         setupEntities()
+        physicsWorld.contactDelegate = self
     }
     
     func setupEntities()
@@ -33,9 +34,13 @@ class GameplayScene: SKScene
     
     private func touchEntities(worldPoint: CGPoint)
     {
-        for e in entities
+        let touchable = entities.flatMap { $0.components.filter { $0 is Touchable } }
+        let prioritised = touchable.sorted { (a: GKComponent, b: GKComponent) -> Bool in
+            (a as! Touchable).priority < (b as! Touchable).priority
+        }
+        for e in prioritised
         {
-            if e.wasTriggered(worldPoint: worldPoint)
+            if (e as! Touchable).wasTriggered(worldPoint: worldPoint)
             {
                 break
             }
@@ -81,6 +86,7 @@ class GameplayScene: SKScene
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
+
     
 
     
