@@ -9,7 +9,7 @@
 import GameplayKit
 import SpriteKit
 
-class PlayerMove : GKComponent, Loadable, Touchable
+class PlayerMove : GKComponent, Loadable, Touchable, GKAgentDelegate
 {
     @GKInspectable var playerSpeed: Float = 280.0
     
@@ -25,6 +25,8 @@ class PlayerMove : GKComponent, Loadable, Touchable
     
     func wasLoaded(into scene: SKScene)
     {
+        guard let spr = entity?.sprite else { return }
+        
         guard let actualPhysicsBody = entity?.sprite?.physicsBody else {
             print("Enable a physics body to make this component work")
             return
@@ -32,6 +34,25 @@ class PlayerMove : GKComponent, Loadable, Touchable
         actualPhysicsBody.categoryBitMask = PhysicsCategory.Player
         actualPhysicsBody.collisionBitMask = PhysicsCategory.Edge
         actualPhysicsBody.contactTestBitMask = PhysicsCategory.All
+        
+        let agent = GKAgent2D()
+        entity?.addComponent(agent)
+        agent.delegate = self
+        agent.position = float2(x: Float(spr.position.x), y: Float(spr.position.y))
+        agent.mass = 0.01
+        agent.maxSpeed = 280.0
+        agent.maxAcceleration = 1000.0
+        
+        if let entities = (scene as? GameplayScene)?.entities
+        {
+            for e in entities
+            {
+                if let seeker = e.component(ofType: SeekPlayer.self)
+                {
+                    seeker.chase(targetAgent: agent)
+                }
+            }
+        }
     }
     
     func move(target: CGPoint)
@@ -62,4 +83,21 @@ class PlayerMove : GKComponent, Loadable, Touchable
             spriteNode.physicsBody?.velocity = CGVector.zero
         }
     }
+
+    func agentWillUpdate(_ agent: GKAgent)
+    {
+        if let agent = entity?.component(ofType: GKAgent2D.self), let spr = entity?.sprite
+        {
+            agent.position = float2(Float(spr.position.x), Float(spr.position.y))
+        }
+    }
+    
+    func agentDidUpdate(_ agent: GKAgent)
+    {
+        if let agent = entity?.component(ofType: GKAgent2D.self), let spr = entity?.sprite
+        {
+            spr.position = CGPoint(x: CGFloat(agent.position.x), y: CGFloat(agent.position.y))
+        }
+    }
+
 }
