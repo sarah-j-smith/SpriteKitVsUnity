@@ -27,7 +27,7 @@ class ActiveState: AnimationState
     and an activated state. */
 class MultiStateObject: GKComponent, Loadable
 {
-    var mobState: GKStateMachine?
+    var multiState: GKStateMachine?
     
     static let ANIMATION_KEY = "StateAnimation"
     
@@ -54,7 +54,7 @@ class MultiStateObject: GKComponent, Loadable
         }
         active.stateHandlers.append(activation)
         print("Assigned multi-state machine to \(spriteNode.name!)")
-        mobState = GKStateMachine(states: [ base, active ])
-        mobState?.enter(BaseState.self)
+        multiState = GKStateMachine(states: [ base, active ])
+        multiState?.enter(BaseState.self)
     }
 }

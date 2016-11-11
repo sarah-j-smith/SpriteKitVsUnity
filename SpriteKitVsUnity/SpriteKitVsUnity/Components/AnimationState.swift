@@ -31,20 +31,21 @@ class AnimationState: GKState
     
     override func didEnter(from previousState: GKState?)
     {
-        print("entering \(name) state")
+//        print("entering \(name) state")
         
         for handler in stateHandlers
         {
             handler()
         }
-        if animation == nil
-        {
-            animation = SKAction(named: name)
-        }
         if let actualAnim = animation
         {
+//            print("   > animating")
             targetNode.removeAction(forKey: AnimationState.ANIMATION_KEY)
             targetNode.run(actualAnim, withKey: AnimationState.ANIMATION_KEY)
+        }
+        else
+        {
+//            print("   > no animation")
         }
     }
 }

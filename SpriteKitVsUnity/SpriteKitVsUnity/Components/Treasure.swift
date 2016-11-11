@@ -19,7 +19,11 @@ class Treasure: GKComponent, Loadable, Activatable
     
     func wasLoaded(into scene: SKScene)
     {
-        guard let actualPhysicsBody = entity?.sprite?.physicsBody else {
+        guard let spr = entity?.sprite else { return }
+        spr.nodeEntity = entity
+        spr.userData?["CHEST"] = 1
+        
+        guard let actualPhysicsBody = spr.physicsBody else {
             print("Enable a physics body to make this component work")
             return
         }

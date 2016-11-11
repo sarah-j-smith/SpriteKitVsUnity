@@ -24,3 +24,34 @@ extension GKEntity
     }
 }
 
+struct WeakEntityReference
+{
+    weak var theEntity: GKEntity?
+    
+    init(entity: GKEntity) {
+        theEntity = entity
+    }
+}
+
+extension SKNode
+{
+    var nodeEntity: GKEntity? {
+        get {
+            return (userData?["ENTREF"] as? WeakEntityReference)?.theEntity
+        }
+        set {
+            if let actualValue = newValue
+            {
+                if userData == nil
+                {
+                    userData = NSMutableDictionary()
+                }
+                userData!["ENTREF"] = WeakEntityReference(entity: actualValue)
+            }
+            else
+            {
+                userData?["ENTREF"] = nil
+            }
+        }
+    }
+}

@@ -47,6 +47,10 @@
 		F6D8DEA21DCFF7D60078EF01 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE8D1DCFF7D60078EF01 /* SKTEffects.swift */; };
 		F6D8DEA31DCFF7D60078EF01 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE8E1DCFF7D60078EF01 /* SKTTimingFunctions.swift */; };
 		F6D8DEA41DCFF7D60078EF01 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE8F1DCFF7D60078EF01 /* Vector3.swift */; };
+		F6EDAA6B1DD541490094407B /* Wander.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EDAA6A1DD541490094407B /* Wander.swift */; };
+		F6EDAA6D1DD542A30094407B /* ZombieEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EDAA6C1DD542A30094407B /* ZombieEnemy.swift */; };
+		F6EDAA6F1DD557090094407B /* BehaviourProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EDAA6E1DD557090094407B /* BehaviourProvider.swift */; };
+		F6EDAA711DD5636F0094407B /* FollowPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EDAA701DD5636F0094407B /* FollowPath.swift */; };
 		F6FBD8A91DD49C7900BC0DA9 /* Treasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FBD8A81DD49C7900BC0DA9 /* Treasure.swift */; };
 		F6FBD8AB1DD49D9600BC0DA9 /* Activatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FBD8AA1DD49D9600BC0DA9 /* Activatable.swift */; };
 		F6FBD8AD1DD4A13900BC0DA9 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FBD8AC1DD4A13900BC0DA9 /* Points.swift */; };
@@ -97,6 +101,10 @@
 		F6D8DE8D1DCFF7D60078EF01 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		F6D8DE8E1DCFF7D60078EF01 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		F6D8DE8F1DCFF7D60078EF01 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		F6EDAA6A1DD541490094407B /* Wander.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wander.swift; sourceTree = "<group>"; };
+		F6EDAA6C1DD542A30094407B /* ZombieEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZombieEnemy.swift; sourceTree = "<group>"; };
+		F6EDAA6E1DD557090094407B /* BehaviourProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviourProvider.swift; sourceTree = "<group>"; };
+		F6EDAA701DD5636F0094407B /* FollowPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowPath.swift; sourceTree = "<group>"; };
 		F6FBD8A81DD49C7900BC0DA9 /* Treasure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treasure.swift; sourceTree = "<group>"; };
 		F6FBD8AA1DD49D9600BC0DA9 /* Activatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activatable.swift; sourceTree = "<group>"; };
 		F6FBD8AC1DD4A13900BC0DA9 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
@@ -169,7 +177,10 @@
 				F69FBC0D1DD427520080BED7 /* Button.swift */,
 				F6FBD8A81DD49C7900BC0DA9 /* Treasure.swift */,
 				F6FBD8AC1DD4A13900BC0DA9 /* Points.swift */,
+				F6EDAA6C1DD542A30094407B /* ZombieEnemy.swift */,
+				F6EDAA6A1DD541490094407B /* Wander.swift */,
 				F6FBD8AE1DD4A82D00BC0DA9 /* SeekPlayer.swift */,
+				F6EDAA701DD5636F0094407B /* FollowPath.swift */,
 			);
 			name = Components;
 			path = SpriteKitVsUnity/Components;
@@ -178,6 +189,7 @@
 		F6D8DE7D1DCFF7D60078EF01 /* GKSupport */ = {
 			isa = PBXGroup;
 			children = (
+				F6EDAA6E1DD557090094407B /* BehaviourProvider.swift */,
 				F68E27CF1DD2D22900B0C4FC /* AnimationState.swift */,
 				F68F13211DD01D2F00FD6C78 /* GameplayScene.swift */,
 				F6D8DE7F1DCFF7D60078EF01 /* GKEntity+SpriteKit.swift */,
@@ -292,10 +304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6EDAA6D1DD542A30094407B /* ZombieEnemy.swift in Sources */,
 				F6FBD8AF1DD4A82D00BC0DA9 /* SeekPlayer.swift in Sources */,
+				F6EDAA6B1DD541490094407B /* Wander.swift in Sources */,
 				F68F13221DD01D2F00FD6C78 /* GameplayScene.swift in Sources */,
 				F6D8DE9A1DCFF7D60078EF01 /* CGPoint+Extensions.swift in Sources */,
+				F6EDAA6F1DD557090094407B /* BehaviourProvider.swift in Sources */,
 				F67376CE1DCF13600047FE55 /* GameScene.swift in Sources */,
+				F6EDAA711DD5636F0094407B /* FollowPath.swift in Sources */,
 				F6D8DE9E1DCFF7D60078EF01 /* SKAction+SpecialEffects.swift in Sources */,
 				F69FBC0E1DD427520080BED7 /* Button.swift in Sources */,
 				F6D8DE991DCFF7D60078EF01 /* CGFloat+Extensions.swift in Sources */,

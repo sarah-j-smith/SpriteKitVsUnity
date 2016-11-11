@@ -40,7 +40,7 @@ class DyingState: AnimationState
     }
 }
 
-/** A component that changes a mobile character sprite between up to 4 different animation actions.  
+/** A component that changes a mobile character sprite between up to 4 different animation actions.
     If idleAnimation and moveAnimation are set then the sprite will change between these depending 
     on its velocity. */
 class MobState: GKComponent, Loadable
@@ -52,6 +52,17 @@ class MobState: GKComponent, Loadable
     @GKInspectable var attackAnimation: String = "Attack"
     @GKInspectable var dieAnimation: String = "Die"
 
+    private func loadAction(actionName: String) -> SKAction?
+    {
+        if let act = SKAction(named: actionName)
+        {
+            return act
+        }
+        let name = entity?.sprite?.name ?? "Unnamed sprite"
+        print("Could not load action \(actionName) for \(name)")
+        return nil
+    }
+    
     func wasLoaded(into scene: SKScene)
     {
         guard let spriteNode = entity?.sprite else {
@@ -59,27 +70,27 @@ class MobState: GKComponent, Loadable
             return
         }
         var animStates = [ AnimationState ]()
-        if let idleAnim = SKAction(named: idleAnimation)
+        if let idleAnim = loadAction(actionName: idleAnimation)
         {
             let idle = IdleState(stateName: idleAnimation, node: spriteNode)
             idle.animation = idleAnim
             animStates.append(idle)
         }
-        if let moveAnim = SKAction(named: moveAnimation)
+        if let moveAnim = loadAction(actionName: moveAnimation)
         {
             let move = MoveState(stateName: moveAnimation, node: spriteNode)
             move.animation = moveAnim
             animStates.append(move)
         }
-        if let attackAnim = SKAction(named: attackAnimation)
+        if let attackAnim = loadAction(actionName: attackAnimation)
         {
             let attack = AttackState(stateName: attackAnimation, node: spriteNode)
             attack.animation = attackAnim
             animStates.append(attack)
         }
-        if let dieAnim = SKAction(named: dieAnimation)
+        if let dieAnim = loadAction(actionName: dieAnimation)
         {
-            let die = AttackState(stateName: dieAnimation, node: spriteNode)
+            let die = DyingState(stateName: dieAnimation, node: spriteNode)
             die.animation = dieAnim
             animStates.append(die)
         }
@@ -97,7 +108,11 @@ class MobState: GKComponent, Loadable
         guard let currentState = mobState?.currentState else { return }
         if currentState.isKind(of: AttackState.self) || currentState.isKind(of: DyingState.self) { return }
         
-        let v = actualPhysicsBody.velocity
+        var v = actualPhysicsBody.velocity
+        if let enemyAI = entity?.component(ofType: ZombieEnemy.self)
+        {
+            v = enemyAI.velocity
+        }
         if fabsf(Float(v.dx)) < 3.0 && fabsf(Float(v.dy)) < 3.0
         {
             actualPhysicsBody.velocity = CGVector.zero
@@ -105,9 +120,9 @@ class MobState: GKComponent, Loadable
         }
         else
         {
-            let flipScale = (actualPhysicsBody.velocity.dx > 0.0) ? 1.0 : -1.0
-            entity?.sprite?.xScale = CGFloat(flipScale)
             mobState?.enter(MoveState.self)
         }
+        let flipScale = (v.dx > 0.0) ? 1.0 : -1.0
+        entity?.sprite?.xScale = CGFloat(flipScale)
     }
 }
