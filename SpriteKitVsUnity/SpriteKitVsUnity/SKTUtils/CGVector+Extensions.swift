@@ -24,6 +24,10 @@ import CoreGraphics
 import SpriteKit
 
 public extension CGVector {
+    
+    public init(vec:vector_float2) {
+        self.init(dx: CGFloat(vec.x), dy: CGFloat(vec.y))
+    }
   /**
    * Creates a new CGVector given a CGPoint.
    */

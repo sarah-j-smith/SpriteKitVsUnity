@@ -18,9 +18,8 @@ class FollowPath: GKComponent, Loadable, BehaviourProvider
     @GKInspectable var pathName: String = "Path Name"
     
     private weak var _graph: GKGraph?
-    private weak var _enemyAgent: GKAgent2D?
     
-    private var targetPoint: CGPoint?
+    private var targetPoint: GKGraphNode2D?
 
     var behaviourName: String {
         return "FollowPath \(pathName) \(entity?.sprite?.name! ?? "unnamed enemy")"
@@ -35,47 +34,56 @@ class FollowPath: GKComponent, Loadable, BehaviourProvider
         }
         _graph = graph
     }
-
-    private func setupGraphPath(for agent: GKAgent2D) -> GKPath?
+    
+    /** Create a path from where the agent is located to some other random location in the
+        graph.  Under the hood creates a node for the location of the agent, joins it to
+        the graph, generates the path and then removes that node again after. */
+    private func updatePath(for agent: GKAgent2D) -> GKPath?
     {
-        var graphPath: GKPath?
-        _enemyAgent = agent
+        if let actualTargetPoint = targetPoint
+        {
+            guard let newTargetNode = _graph?.randomNode() as? GKGraphNode2D else { return nil }
+            guard let path = _graph?.findPath(from: actualTargetPoint, to: newTargetNode) else { return nil }
+            targetPoint = newTargetNode
+            return GKPath(graphNodes: path, radius: radius)
+        }
+        
         guard let graph = _graph else {
             print("No graph intialised")
             return nil
         }
-        guard let nodes = graph.nodes else {
+        guard let nodes = graph.nodesInDistanceOrder(from: agent.positionAsCGPoint()) else {
             print("No nodes in graph \(pathName)")
             return nil
         }
-        let rand = GKRandomSource.sharedRandom()
-        let targetNode = nodes[ rand.nextInt(upperBound: nodes.count) ] as! GKGraphNode2D
-        targetPoint = CGPoint(x: CGFloat(targetNode.position.x), y: CGFloat(targetNode.position.y))
-        let startNode = GKGraphNode2D(point: agent.position)
-        graph.connectToLowestCostNode(node: startNode, bidirectional: true)
-        let path = graph.findPath(from: startNode, to: targetNode)
-        for nd in graph.nodes!
-        {
-            let nd2 = nd as! GKGraphNode2D
-            print("  > \(nd2.position.x), \(nd2.position.y)")
+        if nodes.count < 3 {
+            print("Need more than 2 nodes in graph \(pathName)")
+            return nil
         }
-        print(graph)
+        let nearNode = nodes.first!
+        let targetNode = nodes.last!
+        let startNode = GKGraphNode2D(point: agent.position)
+        startNode.addConnections(to: [ nearNode ], bidirectional: true)
+        let path = graph.findPath(from: startNode, to: targetNode)
+        graph.remove([startNode])
+        targetPoint = targetNode
         if !path.isEmpty
         {
-            graphPath = GKPath(graphNodes: path, radius: radius)
+            return GKPath(graphNodes: path, radius: radius)
         }
-        else
-        {
-            print("Could not find a path from \(startNode) to \(targetNode) in \(pathName)")
-        }
-        graph.remove([startNode])
-        return graphPath
+        print("Could not find a path from \(startNode.position) to \(targetNode.position) in \(pathName)")
+        return nil
     }
     
     func goal(_ enemyAgent: GKAgent2D, withPlayerAgent playerAgent: GKAgent2D) -> GKGoal?
     {
-        if let path = setupGraphPath(for: enemyAgent)
+        if let path = updatePath(for: enemyAgent)
         {
+            print("Sending \(entity?.sprite?.name ?? "Unknown zombie") to \(targetPoint!.point())")
+            for ii in 0 ..< path.numPoints
+            {
+                print("  > \(path.float2(at: ii))")
+            }
             return GKGoal(toFollow: path, maxPredictionTime: TimeInterval(predictionTime), forward: true)
         }
         print("No path available \(pathName)")
@@ -84,12 +92,14 @@ class FollowPath: GKComponent, Loadable, BehaviourProvider
     
     override func update(deltaTime seconds: TimeInterval)
     {
-        if let pos = entity?.sprite?.position, let tgt = targetPoint
+        if let pos = entity?.sprite?.position, let tgt = targetPoint?.point()
         {
             let dist = tgt.distanceTo(pos)
             if dist < 10.0
             {
-                print("At target")
+                guard let zombieBase = entity?.component(ofType: ZombieEnemy.self) else { return }
+                zombieBase.aiUpdateRequired = true
+                print("At target \(entity?.sprite?.name ?? "Unknown zombie")")
             }
         }
     }

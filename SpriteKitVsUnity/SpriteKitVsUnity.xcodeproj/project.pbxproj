@@ -14,6 +14,9 @@
 		F67376D31DCF13600047FE55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67376D11DCF13600047FE55 /* Main.storyboard */; };
 		F67376D51DCF13600047FE55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F67376D41DCF13600047FE55 /* Assets.xcassets */; };
 		F67376D81DCF13600047FE55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67376D61DCF13600047FE55 /* LaunchScreen.storyboard */; };
+		F6820B951DD71099000361E7 /* MoveWithTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6820B941DD71099000361E7 /* MoveWithTouch.swift */; };
+		F6820B971DD7120D000361E7 /* HealthTracked.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6820B961DD7120D000361E7 /* HealthTracked.swift */; };
+		F6820B991DD731A1000361E7 /* GKGraph+Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6820B981DD731A1000361E7 /* GKGraph+Agent.swift */; };
 		F68E27CE1DD2BA7000B0C4FC /* MultiStateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68E27CD1DD2BA7000B0C4FC /* MultiStateObject.swift */; };
 		F68E27D01DD2D22900B0C4FC /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68E27CF1DD2D22900B0C4FC /* AnimationState.swift */; };
 		F68F13221DD01D2F00FD6C78 /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68F13211DD01D2F00FD6C78 /* GameplayScene.swift */; };
@@ -31,7 +34,7 @@
 		F6D8DE901DCFF7D60078EF01 /* CameraConstrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE791DCFF7D60078EF01 /* CameraConstrain.swift */; };
 		F6D8DE911DCFF7D60078EF01 /* NodeFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7A1DCFF7D60078EF01 /* NodeFollow.swift */; };
 		F6D8DE921DCFF7D60078EF01 /* PerimeterFence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7B1DCFF7D60078EF01 /* PerimeterFence.swift */; };
-		F6D8DE931DCFF7D60078EF01 /* PlayerMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7C1DCFF7D60078EF01 /* PlayerMove.swift */; };
+		F6D8DE931DCFF7D60078EF01 /* PlayerCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7C1DCFF7D60078EF01 /* PlayerCharacter.swift */; };
 		F6D8DE951DCFF7D60078EF01 /* GKEntity+SpriteKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE7F1DCFF7D60078EF01 /* GKEntity+SpriteKit.swift */; };
 		F6D8DE961DCFF7D60078EF01 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE801DCFF7D60078EF01 /* Loadable.swift */; };
 		F6D8DE981DCFF7D60078EF01 /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D8DE821DCFF7D60078EF01 /* Touchable.swift */; };
@@ -67,6 +70,9 @@
 		F67376D41DCF13600047FE55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F67376D71DCF13600047FE55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F67376D91DCF13600047FE55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6820B941DD71099000361E7 /* MoveWithTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveWithTouch.swift; sourceTree = "<group>"; };
+		F6820B961DD7120D000361E7 /* HealthTracked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthTracked.swift; sourceTree = "<group>"; };
+		F6820B981DD731A1000361E7 /* GKGraph+Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GKGraph+Agent.swift"; sourceTree = "<group>"; };
 		F68E27CD1DD2BA7000B0C4FC /* MultiStateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiStateObject.swift; sourceTree = "<group>"; };
 		F68E27CF1DD2D22900B0C4FC /* AnimationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationState.swift; path = ../Components/AnimationState.swift; sourceTree = "<group>"; };
 		F68F13211DD01D2F00FD6C78 /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
@@ -85,7 +91,7 @@
 		F6D8DE791DCFF7D60078EF01 /* CameraConstrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraConstrain.swift; sourceTree = "<group>"; };
 		F6D8DE7A1DCFF7D60078EF01 /* NodeFollow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeFollow.swift; sourceTree = "<group>"; };
 		F6D8DE7B1DCFF7D60078EF01 /* PerimeterFence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerimeterFence.swift; sourceTree = "<group>"; };
-		F6D8DE7C1DCFF7D60078EF01 /* PlayerMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMove.swift; sourceTree = "<group>"; };
+		F6D8DE7C1DCFF7D60078EF01 /* PlayerCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCharacter.swift; sourceTree = "<group>"; };
 		F6D8DE7F1DCFF7D60078EF01 /* GKEntity+SpriteKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GKEntity+SpriteKit.swift"; sourceTree = "<group>"; };
 		F6D8DE801DCFF7D60078EF01 /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		F6D8DE821DCFF7D60078EF01 /* Touchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Touchable.swift; sourceTree = "<group>"; };
@@ -171,7 +177,6 @@
 				F6D8DE791DCFF7D60078EF01 /* CameraConstrain.swift */,
 				F6D8DE7A1DCFF7D60078EF01 /* NodeFollow.swift */,
 				F6D8DE7B1DCFF7D60078EF01 /* PerimeterFence.swift */,
-				F6D8DE7C1DCFF7D60078EF01 /* PlayerMove.swift */,
 				F6CA5B8E1DD07FD60099874A /* MobState.swift */,
 				F68E27CD1DD2BA7000B0C4FC /* MultiStateObject.swift */,
 				F69FBC0D1DD427520080BED7 /* Button.swift */,
@@ -181,6 +186,9 @@
 				F6EDAA6A1DD541490094407B /* Wander.swift */,
 				F6FBD8AE1DD4A82D00BC0DA9 /* SeekPlayer.swift */,
 				F6EDAA701DD5636F0094407B /* FollowPath.swift */,
+				F6D8DE7C1DCFF7D60078EF01 /* PlayerCharacter.swift */,
+				F6820B941DD71099000361E7 /* MoveWithTouch.swift */,
+				F6820B961DD7120D000361E7 /* HealthTracked.swift */,
 			);
 			name = Components;
 			path = SpriteKitVsUnity/Components;
@@ -197,6 +205,7 @@
 				F6D8DE821DCFF7D60078EF01 /* Touchable.swift */,
 				F69FBC0F1DD42A880080BED7 /* GameplayScene+Physics.swift */,
 				F6FBD8AA1DD49D9600BC0DA9 /* Activatable.swift */,
+				F6820B981DD731A1000361E7 /* GKGraph+Agent.swift */,
 			);
 			name = GKSupport;
 			path = SpriteKitVsUnity/GKSupport;
@@ -304,7 +313,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6820B951DD71099000361E7 /* MoveWithTouch.swift in Sources */,
+				F6820B991DD731A1000361E7 /* GKGraph+Agent.swift in Sources */,
 				F6EDAA6D1DD542A30094407B /* ZombieEnemy.swift in Sources */,
+				F6820B971DD7120D000361E7 /* HealthTracked.swift in Sources */,
 				F6FBD8AF1DD4A82D00BC0DA9 /* SeekPlayer.swift in Sources */,
 				F6EDAA6B1DD541490094407B /* Wander.swift in Sources */,
 				F68F13221DD01D2F00FD6C78 /* GameplayScene.swift in Sources */,
@@ -325,7 +337,7 @@
 				F6D8DE901DCFF7D60078EF01 /* CameraConstrain.swift in Sources */,
 				F6D8DE981DCFF7D60078EF01 /* Touchable.swift in Sources */,
 				F6CA5B8F1DD07FD60099874A /* MobState.swift in Sources */,
-				F6D8DE931DCFF7D60078EF01 /* PlayerMove.swift in Sources */,
+				F6D8DE931DCFF7D60078EF01 /* PlayerCharacter.swift in Sources */,
 				F6D8DE951DCFF7D60078EF01 /* GKEntity+SpriteKit.swift in Sources */,
 				F6D8DE9D1DCFF7D60078EF01 /* SKAction+Extensions.swift in Sources */,
 				F67376C81DCF13600047FE55 /* AppDelegate.swift in Sources */,

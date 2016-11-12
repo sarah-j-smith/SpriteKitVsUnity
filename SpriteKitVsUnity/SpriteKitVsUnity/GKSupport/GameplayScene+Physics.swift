@@ -18,38 +18,42 @@ extension GameplayScene: SKPhysicsContactDelegate
             gameObject.multiState?.enter(ActiveState.self)
         }
         if let zombie = entityA.component(ofType: ZombieEnemy.self),
-            let player = entityB.component(ofType: PlayerMove.self)
+            let _ = entityB.component(ofType: PlayerCharacter.self)
         {
             let mob = entityA.component(ofType: MobState.self)!.mobState!
             mob.enter(AttackState.self)
-            player.takeDamage(dps: zombie.dps)
+            let health = entityB.component(ofType: HealthTracked.self)!
+            health.takeDamage(dps: zombie.dps)
         }
         if let zombie = entityB.component(ofType: ZombieEnemy.self),
-            let player = entityA.component(ofType: PlayerMove.self)
+            let _ = entityA.component(ofType: PlayerCharacter.self)
         {
             let mob = entityB.component(ofType: MobState.self)!.mobState!
             mob.enter(AttackState.self)
-            player.takeDamage(dps: zombie.dps)
+            let health = entityA.component(ofType: HealthTracked.self)!
+            health.takeDamage(dps: zombie.dps)
         }
     }
 
     func deactivate(entityA: GKEntity, entityB: GKEntity)
     {
         if let zombie = entityA.component(ofType: ZombieEnemy.self),
-            let player = entityB.component(ofType: PlayerMove.self)
+            let _ = entityB.component(ofType: PlayerCharacter.self)
         {
             let mob = entityA.component(ofType: MobState.self)!.mobState!
             mob.enter(IdleState.self)
             entityA.component(ofType: MobState.self)?.mobState?.enter(AttackState.self)
-            player.ceaseDamage(dps: zombie.dps)
+            let health = entityB.component(ofType: HealthTracked.self)!
+            health.ceaseDamage(dps: zombie.dps)
         }
         if let zombie = entityB.component(ofType: ZombieEnemy.self),
-            let player = entityA.component(ofType: PlayerMove.self)
+            let _ = entityA.component(ofType: PlayerCharacter.self)
         {
             let mob = entityB.component(ofType: MobState.self)!.mobState!
             mob.enter(IdleState.self)
             entityB.component(ofType: MobState.self)?.mobState?.enter(AttackState.self)
-            player.ceaseDamage(dps: zombie.dps)
+            let health = entityB.component(ofType: HealthTracked.self)!
+            health.ceaseDamage(dps: zombie.dps)
         }
     }
     
